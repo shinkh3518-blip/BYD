@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BYD 수원전시장 상담 및 시승 예약">
+<title>상담 예약 | BYD 수원전시장</title>
+
+<style>
+:root{--navy:#101d32;--teal:#00a9a0;--ink:#182334;--muted:#657184;--line:#e3e8ee}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,"Noto Sans KR",sans-serif;color:var(--ink);background:#f4f7fa}
+header{background:var(--navy);color:white;padding:22px 20px}
+.head,main{max-width:760px;margin:0 auto}
+.brand{font-weight:800;letter-spacing:.04em;font-size:20px}
+.brand span{color:#53d6ce}
+.sub{color:#d5deea;font-size:13px;margin-top:6px}
+main{padding:36px 18px 56px}
+.intro{margin-bottom:24px}
+h1{font-size:30px;margin:0 0 10px}
+.intro p{color:var(--muted);line-height:1.7;margin:0}
+form{background:white;border:1px solid var(--line);border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(16,29,50,.06)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:18px}
+label{display:block;font-weight:700;font-size:14px;margin-bottom:8px}
+.required{color:#d34b4b}
+input,select,textarea{width:100%;border:1px solid #ccd5df;border-radius:9px;padding:13px 12px;font:inherit;font-size:15px;background:white}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(0,169,160,.18);border-color:var(--teal)}
+textarea{min-height:110px;resize:vertical}
+.consent{display:flex;align-items:flex-start;gap:9px;font-size:13px;line-height:1.6;color:var(--muted);margin:6px 0 20px}
+.consent input{width:auto;margin-top:3px}
+button{width:100%;border:0;border-radius:10px;background:var(--teal);color:white;font-weight:800;font-size:17px;padding:16px;cursor:pointer}
+button:hover{background:#008f88}
+button:disabled{background:#8ca8a6;cursor:wait}
+.notice{font-size:12px;color:var(--muted);line-height:1.6;margin:14px 2px 0}
+.back{display:inline-block;margin-top:22px;color:var(--navy);text-decoration:none;font-weight:700}
+footer{text-align:center;color:#7a8797;font-size:12px;padding:0 18px 28px}
+@media(max-width:600px){
+.grid{grid-template-columns:1fr;gap:0}
+form{padding:21px 17px}
+h1{font-size:26px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="head">
+    <div class="brand">BYD <span>수원전시장</span></div>
+    <div class="sub">오은세 매니저 · 상담 및 시승 예약</div>
+  </div>
+</header>
+
+<main>
+
+<section class="intro">
+  <h1>상담 예약</h1>
+  <p>
+    관심 있는 차량과 상담 희망 일정을 남겨주세요.<br>
+    신청 내용을 확인한 후 담당자가 연락드리겠습니다.
+  </p>
+</section>
+
+<form id="bookingForm">
+
+  <div class="grid">
+    <div class="field">
+      <label for="name">성함 <span class="required">*</span></label>
+      <input id="name" name="customer_name" type="text"
+        autocomplete="name" required maxlength="50"
+        placeholder="성함을 입력해 주세요">
+    </div>
+
+    <div class="field">
+      <label for="phone">연락처 <span class="required">*</span></label>
+      <input id="phone" name="customer_phone" type="tel"
+        autocomplete="tel" required maxlength="20"
+        placeholder="010-0000-0000">
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="field">
+      <label for="model">관심 차량 <span class="required">*</span></label>
+      <select id="model" name="vehicle" required>
+        <option value="">차량을 선택해 주세요</option>
+        <option>씨라이언6</option>
+        <option>씨라이언7</option>
+        <option>아토3</option>
+        <option>기타 / 아직 미정</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="type">상담 유형 <span class="required">*</span></label>
+      <select id="type" name="consultation_type" required>
+        <option value="">상담 유형을 선택해 주세요</option>
+        <option>차량 구매 상담</option>
+        <option>시승 예약</option>
+        <option>견적 문의</option>
+        <option>할부 및 금융 상담</option>
+        <option>기타</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="field">
+      <label for="date">희망 방문 날짜</label>
+      <input id="date" name="visit_date" type="date">
+    </div>
+
+    <div class="field">
+      <label for="time">희망 방문 시간</label>
+      <select id="time" name="visit_time">
+        <option value="">시간을 선택해 주세요</option>
+        <option>오전 10시~12시</option>
+        <option>오후 12시~2시</option>
+        <option>오후 2시~4시</option>
+        <option>오후 4시~6시</option>
+        <option>담당자와 협의</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="message">추가 문의 사항</label>
+    <textarea id="message" name="message"
+      maxlength="1000"
+      placeholder="궁금하신 점이나 요청 사항을 적어주세요."></textarea>
+  </div>
+
+  <label class="consent">
+    <input type="checkbox" name="privacy_consent"
+      value="동의함" required>
+    <span>
+      상담 예약 접수 및 안내를 위해 입력한 성함, 연락처,
+      관심 차량 및 예약 정보를 수집·이용하는 데 동의합니다.
+      동의를 거부할 수 있으며, 거부 시 온라인 예약 접수가
+      제한될 수 있습니다. 정보는 상담 목적 달성 후 지체 없이 파기합니다.
+      <span class="required">*</span>
+    </span>
+  </label>
+
+  <button type="submit" id="bookingSubmit">
+    상담 예약 신청하기
+  </button>
+
+  <p id="bookingStatus" class="notice" role="status" aria-live="polite">
+    ※ 본 신청은 상담 요청이며 방문 시간 확정은 담당자 확인 후 안내드립니다.
+    민감한 개인정보나 결제정보는 입력하지 마세요.
+  </p>
+
+</form>
+</main>
+
+<footer>
+  BYD 수원전시장 오은세 · 010-2495-9456
+</footer>
+
+<!-- EmailJS 라이브러리 -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+  // EmailJS 초기화
+  emailjs.init({
+    publicKey: "eZ0MlHmfReVIs5afQ"
+  });
+
+  const form = document.getElementById("bookingForm");
+  const button = document.getElementById("bookingSubmit");
+  const status = document.getElementById("bookingStatus");
+
+  form.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    if (!form.reportValidity()) return;
+
+    button.disabled = true;
+    button.textContent = "예약 신청 전송 중...";
+    status.textContent = "예약 내용을 이메일로 전송하고 있습니다.";
+
+    const templateParams = {
+      customer_name: form.customer_name.value,
+      customer_phone: form.customer_phone.value,
+      vehicle: form.vehicle.value,
+      consultation_type: form.consultation_type.value,
+      visit_date: form.visit_date.value || "미정",
+      visit_time: form.visit_time.value || "미정",
+      message: form.message.value || "추가 문의 없음",
+      privacy_consent: form.privacy_consent.checked ? "동의함" : "미동의"
+    };
+
+    try {
+await emailjs.send(
+  "service_j077khy",
+  "template_0ttu5jm",
+  templateParams
+);
+
+      status.textContent = "예약 신청이 정상적으로 접수되었습니다.";
+
+      window.location.href =
+        "https://dmstp9456-wq.github.io/BYD/success.html";
+
+    } catch (error) {
+  console.error("EmailJS 발송 오류:", error);
+
+  status.textContent =
+    "발송 실패: " + (error.text || error.message || JSON.stringify(error));
+
+  button.disabled = false;
+  button.textContent = "상담 예약 신청하기";
+}
+  });
+</script>
+
+</body>
+</html>
