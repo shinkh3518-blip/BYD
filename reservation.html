@@ -201,8 +201,7 @@ await emailjs.send(
 
       status.textContent = "예약 신청이 정상적으로 접수되었습니다.";
 
-      window.location.href =
-        "https://shinkh3518-blip.github.io/BYD/success.html";
+      window.location.assign("./success.html");
 
     } catch (error) {
   console.error("EmailJS 발송 오류:", error);
