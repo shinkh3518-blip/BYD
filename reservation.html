@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -159,60 +160,59 @@ h1{font-size:26px}
   BYD 수원전시장 오은세 · 010-2495-9456
 </footer>
 
-<!-- EmailJS 라이브러리 -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-  // EmailJS 초기화
-  emailjs.init({
-    publicKey: "P03LELj35OueHBMXZ"
-  });
+emailjs.init({
+  publicKey: "P03LELj35OueHBMXZ"
+});
 
-  const form = document.getElementById("bookingForm");
-  const button = document.getElementById("bookingSubmit");
-  const status = document.getElementById("bookingStatus");
+const form = document.getElementById("bookingForm");
+const button = document.getElementById("bookingSubmit");
+const status = document.getElementById("bookingStatus");
 
-  form.addEventListener("submit", async function(event) {
-    event.preventDefault();
+form.addEventListener("submit", async function(event) {
+  event.preventDefault();
 
-    if (!form.reportValidity()) return;
+  if (!form.reportValidity()) return;
 
-    button.disabled = true;
-    button.textContent = "예약 신청 전송 중...";
-    status.textContent = "예약 내용을 이메일로 전송하고 있습니다.";
+  button.disabled = true;
+  button.textContent = "예약 신청 전송 중...";
+  status.textContent = "예약 내용을 이메일로 전송하고 있습니다.";
 
-    const templateParams = {
-      customer_name: form.customer_name.value,
-      customer_phone: form.customer_phone.value,
-      vehicle: form.vehicle.value,
-      consultation_type: form.consultation_type.value,
-      visit_date: form.visit_date.value || "미정",
-      visit_time: form.visit_time.value || "미정",
-      message: form.message.value || "추가 문의 없음",
-      privacy_consent: form.privacy_consent.checked ? "동의함" : "미동의"
-    };
+  const templateParams = {
+    customer_name: form.elements["customer_name"].value,
+    customer_phone: form.elements["customer_phone"].value,
+    vehicle: form.elements["vehicle"].value,
+    consultation_type: form.elements["consultation_type"].value,
+    visit_date: form.elements["visit_date"].value || "미정",
+    visit_time: form.elements["visit_time"].value || "미정",
+    message: form.elements["message"].value || "추가 문의 없음",
+    privacy_consent: form.elements["privacy_consent"].checked ? "동의함" : "미동의"
+  };
 
-    try {
-await emailjs.send(
-  "service_j5b5e0f",
-  "template_qzgqxg7",
-  templateParams
-);
+  try {
+    await emailjs.send(
+      "service_j5b5e0f",
+      "template_qzgqxg7",
+      templateParams
+    );
 
-      status.textContent = "예약 신청이 정상적으로 접수되었습니다.";
+    status.textContent = "예약 신청이 정상적으로 접수되었습니다.";
 
-      window.location.assign("/BYD/success.html");
+    // 예약 완료 페이지로 이동
+    window.location.assign("./success.html");
 
-    } catch (error) {
-  console.error("EmailJS 발송 오류:", error);
+  } catch (error) {
+    console.error("EmailJS 발송 오류:", error);
 
-  status.textContent =
-    "발송 실패: " + (error.text || error.message || JSON.stringify(error));
+    status.textContent =
+      "발송 실패: " + (error.text || error.message || JSON.stringify(error));
 
-  button.disabled = false;
-  button.textContent = "상담 예약 신청하기";
-}
-  });
+    button.disabled = false;
+    button.textContent = "상담 예약 신청하기";
+  }
+});
 </script>
 
 </body>
